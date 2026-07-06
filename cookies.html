@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mossoria Thorn Whisper · privacy</title>
+  <!-- unique typography: IBM Plex Serif + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ----- RESET & VARIABLES (unique palette: deep moss, clay, cream, sage) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --moss: #2f4f3a;        /* deep woodland */
+      --clay: #a67b5b;        /* terracotta accent */
+      --cream: #f7f3eb;       /* page background */
+      --sage: #7d9b7a;        /* subtle green */
+      --charcoal: #1e2b24;    /* text primary */
+      --stone: #e5ded5;       /* borders, cards */
+      --white: #ffffff;
+      --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.06);
+      --radius: 32px;
+      --transition: all 0.2s ease;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 0.5rem;
+    }
+
+    /* ----- TYPOGRAPHY (unique spacing & scale) ----- */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-top: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: 3.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      border-left: 6px solid var(--clay);
+      padding-left: 1rem;
+      margin-top: 2.8rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-top: 1.8rem;
+      color: #1e3d2e;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      max-width: 72ch;
+    }
+
+    a {
+      color: var(--moss);
+      text-decoration: none;
+      transition: var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: var(--clay);
+      border-bottom: 1px solid var(--clay);
+    }
+
+    .serif {
+      font-family: var(--font-serif);
+    }
+
+    /* ----- LAYOUT & CARDS (unique card design: raised with subtle border) ----- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--stone);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      border-color: var(--sage);
+    }
+
+    .card h3 {
+      margin-top: 0.2rem;
+      font-size: 1.5rem;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--clay);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #2d3d33;
+      flex: 1;
+    }
+
+    .read-more {
+      margin-top: 1.2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--moss);
+      border-bottom: 2px solid var(--sage);
+      align-self: flex-start;
+    }
+
+    /* ----- HERO (unique: big intro, minimal image) ----- */
+    .hero {
+      padding: 4.5rem 0 3rem 0;
+      border-bottom: 1px solid #d6ccc2;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-content {
+      max-width: 80ch;
+    }
+
+    .hero-tag {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--clay);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #2c3d31;
+      max-width: 70ch;
+    }
+
+    .hero-image {
+      margin: 2rem 0 1rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #d9d0c4;
+      padding: 0.75rem 1.5rem;
+      display: inline-block;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><rect width="100" height="40" fill="%23a67b5b" opacity="0.2"/><text x="10" y="26" font-family="Inter" font-size="14" fill="%232f4f3a">🌱  mossoria thorn whisper ·  est. 2026</text></svg>');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 240px 40px;
+    }
+
+    /* ----- section spacing ----- */
+    section {
+      margin: 4rem 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .section-head h2 {
+      border-left: none;
+      padding-left: 0;
+      margin-top: 0;
+    }
+
+    .section-link {
+      font-weight: 500;
+      color: var(--clay);
+    }
+
+    /* ----- beginner guides, expert, etc (dual column) ----- */
+    .split-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .split-col .card {
+      padding: 1.8rem;
+    }
+
+    /* list styling */
+    ul, ol {
+      margin: 0.8rem 0 1.5rem 1.8rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+      background: white;
+      border-radius: 24px;
+      border: 1px solid var(--stone);
+      padding: 0.2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th {
+      background: var(--moss);
+      color: white;
+      font-weight: 500;
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+    }
+    td {
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid #e0d8ce;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--stone);
+    }
+    .faq-item h4 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--moss);
+    }
+    .faq-item p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* newsletter */
+    .newsletter {
+      background: var(--moss);
+      color: white;
+      border-radius: var(--radius);
+      padding: 3rem 3.5rem;
+      margin: 4rem 0;
+    }
+    .newsletter h2 {
+      color: white;
+      border-left-color: var(--clay);
+      margin-top: 0;
+    }
+    .newsletter p {
+      max-width: 60ch;
+      color: #d9d0c4;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.5rem;
+      border-radius: 60px;
+      border: none;
+      min-width: 260px;
+      font-size: 1rem;
+      background: #f2ede5;
+      color: #1e2b24;
+      margin-right: 0.8rem;
+    }
+    .newsletter button {
+      background: var(--clay);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .newsletter button:hover {
+      background: #8f6a4b;
+      transform: scale(0.97);
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid #d6ccc2;
+      padding: 2.5rem 0 3rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #3a4d3f;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* images (only 4 total, minimal) */
+    .featured-img {
+      border-radius: 28px;
+      background: #d9d0c4;
+      padding: 1.2rem 2rem;
+      margin: 1.8rem 0 1rem 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30"><rect width="120" height="30" fill="%23a67b5b" opacity="0.15"/><text x="8" y="20" font-family="Inter" font-size="12" fill="%232f4f3a">🌿  featured article image</text></svg>');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 200px 30px;
+    }
+    .category-img {
+      background: #d9d0c4;
+      border-radius: 100px;
+      padding: 0.6rem 1.8rem;
+      display: inline-block;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="22" viewBox="0 0 100 22"><rect width="100" height="22" fill="%23a67b5b" opacity="0.1"/><text x="6" y="16" font-family="Inter" font-size="11" fill="%232f4f3a">🍃  category</text></svg>');
+      background-repeat: no-repeat;
+      background-size: 100px 22px;
+    }
+    .infographic {
+      background: #d9d0c4;
+      border-radius: 30px;
+      padding: 1.8rem 2.5rem;
+      margin: 2rem 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40"><rect width="180" height="40" fill="%23a67b5b" opacity="0.08"/><text x="10" y="26" font-family="Inter" font-size="14" fill="%232f4f3a">📊  infographic: seasonal gardening</text></svg>');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 260px 40px;
+    }
+
+    /* privacy specific: highlight cards */
+    .privacy-highlight {
+      background: #f0ebe2;
+      border-left: 6px solid var(--clay);
+      padding: 1.5rem 2rem;
+      border-radius: 24px;
+      margin: 2rem 0;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      body { padding: 0 0.8rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .split-col { grid-template-columns: 1fr; }
+      .newsletter { padding: 2rem 1.5rem; }
+      .newsletter input { min-width: 180px; margin-bottom: 0.8rem; }
+    }
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+    .mt-0 { margin-top: 0; }
+    .mb-0 { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO (privacy page) -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">⟡ Mossoria Thorn Whisper · privacy</div>
+      <h1>Your data, our promise</h1>
+      <p>We believe in transparency. This policy explains how we collect, use, and protect your information when you visit our garden — digital or physical.</p>
+      <!-- subtle image -->
+      <div class="hero-image" aria-label="hero illustration: leaves and envelope"></div>
+    </div>
+  </header>
+
+  <!-- PRIVACY INTRO -->
+  <section>
+    <h2>Our commitment</h2>
+    <p>At Mossoria Thorn Whisper, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
+    <div class="privacy-highlight">
+      <p style="margin-bottom: 0;"><strong>🌿 Summary:</strong> We collect only what we need, we never sell your data, and you can opt out at any time. If you have questions, our contact details are at the end of this page.</p>
+    </div>
+  </section>
+
+  <!-- DATA WE COLLECT (cards) -->
+  <section>
+    <h2>Information we collect</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="meta">▸ personal data</div>
+        <h3>Identity & contact</h3>
+        <p>When you subscribe, fill a form, or email us, we may collect your name, email address, and any details you share in your message.</p>
+      </div>
+      <div class="card">
+        <div class="meta">▸ technical data</div>
+        <h3>Usage & analytics</h3>
+        <p>We gather anonymous data about your visit — pages viewed, time spent, and browser type — to improve our content and experience.</p>
+      </div>
+      <div class="card">
+        <div class="meta">▸ marketing</div>
+        <h3>Newsletter preferences</h3>
+        <p>If you opt in, we store your email to send you seasonal almanacs and garden stories. You can unsubscribe with one click.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE USE DATA (split columns) -->
+  <section>
+    <h2>How we use your data</h2>
+    <div class="split-col">
+      <div class="card">
+        <h3>🌱 To provide our service</h3>
+        <p>We use your contact details to respond to inquiries, send you requested information, and manage your newsletter subscription. We never share your data with third parties for marketing.</p>
+      </div>
+      <div class="card">
+        <h3>📈 To improve our garden</h3>
+        <p>Analytics help us understand which articles resonate most, so we can grow better content. All data is aggregated and anonymised.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA STORAGE & SECURITY (table) -->
+  <section>
+    <h2>Storage & security</h2>
+    <p>We keep your data only as long as necessary and protect it with industry-standard measures.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Data type</th><th>Retention period</th><th>Security measure</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Contact form messages</td><td>12 months</td><td>Encrypted storage, access limited</td></tr>
+          <tr><td>Newsletter email</td><td>Until unsubscribed</td><td>Secure mailing platform, double opt-in</td></tr>
+          <tr><td>Analytics (anonymous)</td><td>26 months</td><td>Aggregated, no personal identifiers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- YOUR RIGHTS (FAQ style) -->
+  <section>
+    <h2>Your rights</h2>
+    <div class="faq-item">
+      <h4>Right to access & rectification</h4>
+      <p>You can request a copy of the data we hold about you, and ask us to correct any inaccuracies.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Right to erasure</h4>
+      <p>You can ask us to delete your personal data at any time. We will do so promptly, unless we are required to keep it for legal reasons.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Right to withdraw consent</h4>
+      <p>If you’ve subscribed to our newsletter, you can unsubscribe using the link in every email, or by contacting us directly.</p>
+    </div>
+  </section>
+
+  <!-- COOKIES (small note) -->
+  <section>
+    <h2>Cookies & tracking</h2>
+    <p>We use only essential cookies to keep the site running smoothly. No third-party tracking cookies are used without your explicit consent. You can control cookie settings in your browser.</p>
+    <div class="privacy-highlight" style="border-left-color: var(--sage);">
+      <p style="margin-bottom: 0;"><strong>🍪 Our cookie policy:</strong> We use a minimal set of cookies — just enough to remember your preferences and gather anonymous analytics. We do not use tracking for advertising.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT FOR PRIVACY QUESTIONS -->
+  <section>
+    <h2>Privacy questions?</h2>
+    <div style="background: white; border-radius: var(--radius); padding: 2rem 2.5rem; border: 1px solid var(--stone);">
+      <p style="max-width: 100%;">If you have any questions about this privacy policy or how we handle your data, please reach out to our data protection lead:</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;">
+        <div><strong>📧 Email:</strong> <a href="mailto:privacy@mossoriathorn.com">privacy@mossoriathorn.com</a></div>
+        <div><strong>📞 Phone:</strong> +44 (0) 20 7946 0239 (Mon–Fri)</div>
+        <div><strong>📍 Address:</strong> 47 Walled Garden Lane, Thornbury, TW7 5QX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATE & EFFECTIVE DATE -->
+  <section>
+    <div style="background: #ece6dc; border-radius: var(--radius); padding: 1.5rem 2rem; text-align: center; border: 1px solid #d6ccc2;">
+      <p style="margin-bottom: 0; font-size: 0.9rem; color: #2f4f3a;"><strong>Effective date:</strong> 1 May 2026 · This policy is reviewed annually and updated as needed.</p>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (keep consistent) -->
+  <section class="newsletter">
+    <h2>Subscribe to the Thorn</h2>
+    <p>Weekly essays, seasonal almanacs, and behind-the-scenes from our test gardens. No spam, only soil.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem;">
+      <input type="email" placeholder="your email address" aria-label="email for newsletter">
+      <button type="button">subscribe</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div><span style="font-weight:600;">Mossoria Thorn Whisper</span> · © 2026</div>
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+      <a href="#">about</a>
+      <a href="#">articles</a>
+      <a href="contact.html">contact</a>
+      <a href="#" style="border-bottom: 2px solid var(--clay);">privacy</a>
+    </div>
+  </footer>
+
+</div>
+<!-- end container -->
+</body>
+</html>
